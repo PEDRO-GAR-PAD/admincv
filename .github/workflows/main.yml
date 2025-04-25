@@ -22,9 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Angular App
+      - name: build
         run: |
-          npm run build -- --output-path=docs
+          npm run build --output-path=docs
 
       - name: Docker login
         env:
