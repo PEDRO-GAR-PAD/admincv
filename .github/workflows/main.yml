@@ -30,14 +30,14 @@ jobs:
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Download and run the Docker base image
-        run: docker run -d --name http_admin_cv httpd
+        run: docker run -d --name http_admin_mycv httpd
 
       - name: copy model to the Docker image
-        run: docker cp docs/. http_admin_cv:/usr/local/apache2/htdocs
+        run: docker cp docs/. http_admin_mycv:/usr/local/apache2/htdocs
 
       - name: Build the custom Docker image
         run: |
-          docker commit --change "ENV MODEL_NAME http_admin_cv" http_admin_cv \
+          docker commit --change "ENV MODEL_NAME http_admin_mycv" http_admin_mycv \
           ${{ secrets.DOCKER_USER }}/admin_mycv:${{ github.sha }}
       - name: Docker Push
         run: docker push ${{ secrets.DOCKER_USER }}/admin_mycv:${{ github.sha }}
