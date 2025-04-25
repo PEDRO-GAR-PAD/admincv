@@ -1,0 +1,22 @@
+<div class="education-section">
+  <div class="edu-form card">
+    <h2>{{ btntxt }} Educación</h2>
+    <form (ngSubmit)="AgregarEducation()">
+      <input type="text" class="txt" name="date" placeholder="Fecha inicio (mmm-yyyy)" [(ngModel)]="myEducation.date">
+      <input type="text" class="txt" name="school" placeholder="Escuela" [(ngModel)]="myEducation.school">
+      <input type="text" class="txt" name="location" placeholder="Institución" [(ngModel)]="myEducation.location">
+      <button type="submit" class="btn submit">{{ btntxt }}</button>
+    </form>
+  </div>
+
+  <div class="edu-list card">
+    <h2>Estudios Guardados</h2>
+    <div *ngFor="let edu of education;" class="edu-item">
+      <div class="edu-info">
+        <span class="edu-school">{{ edu.school }}</span>
+        <span class="edu-date">{{ edu.date }}</span>
+      </div>
+      <button class="btn delete" (click)="deleteEducation(edu.id)">Eliminar</button>
+    </div>
+  </div>
+</div>

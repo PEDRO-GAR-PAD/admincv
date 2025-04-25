@@ -1,0 +1,42 @@
+<div class="skill-section">
+  <!-- Formulario -->
+  <div class="skill-form card">
+    <h2>Agregar Habilidades</h2>
+    <form (ngSubmit)="AgregarSkill()">
+      <input
+        type="text"
+        class="txt"
+        placeholder="¿Qué herramientas usas?"
+        [(ngModel)]="mySkill.name"
+        name="skill"
+      />
+      <input
+        type="text"
+        class="txt"
+        placeholder="Porcentaje de la habilidad (0-100)"
+        [(ngModel)]="mySkill.level"
+        name="level"
+      />
+      <button type="submit" class="btn submit">Guardar</button>
+    </form>
+  </div>
+
+  <!-- Lista de habilidades -->
+  <div class="skill-list card">
+    <h2>Habilidades Guardadas</h2>
+    <div *ngFor="let skill of skills" class="skill-item">
+      <div class="skill-main">
+        <div class="skill-info">
+          <span class="skill-name">{{ skill.name }}</span>
+          <span class="skill-level">{{ skill.level }}%</span>
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="skill.level"></div>
+          </div>
+        </div>
+        <button type="button" class="btn delete" (click)="deleteSkill(skill.id)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

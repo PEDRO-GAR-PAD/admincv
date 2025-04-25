@@ -1,0 +1,32 @@
+<div class="experience-section">
+  <!-- Formulario -->
+  <div class="experience-form card">
+    <h2>{{ btntxt }} Experiencia Laboral</h2>
+    <form (ngSubmit)="AgregarJob()">
+      <input type="text" id="startDate" class="txt" placeholder="Inicio (mm/yyyy)" [(ngModel)]="myWorkExperience.startDate" name="startDate">
+      <input type="text" id="endDate" class="txt" placeholder="Fin (mm/yyyy)" [(ngModel)]="myWorkExperience.endDate" name="endDate">
+      <input type="text" id="location" class="txt" placeholder="Ubicación" [(ngModel)]="myWorkExperience.location" name="location">
+      <input type="text" id="position" class="txt" placeholder="Puesto" [(ngModel)]="myWorkExperience.position" name="position">
+      <input type="text" id="company" class="txt" placeholder="Empresa" [(ngModel)]="myWorkExperience.company" name="company">
+      <input type="text" id="accomplishments" class="txt" placeholder="Logros" [(ngModel)]="myWorkExperience.accomplishments" name="accomplishments">
+      <button type="submit" class="btn submit">{{ btntxt }}</button>
+    </form>
+  </div>
+
+  <!-- Lista de experiencias -->
+  <div class="experience-list card">
+    <h2>Experiencias Guardadas</h2>
+    <div *ngFor="let job of workExperience" class="experience-item">
+      <div class="job-details">
+        <div class="job-main">
+          <div>
+            <strong class="company">{{ job.company }}</strong> — <span class="position">{{ job.position }}</span><br>
+            <small class="meta">{{ job.startDate }} - {{ job.endDate }} | {{ job.location }}</small>
+            <p class="accomplishments">{{ job.accomplishments }}</p>
+          </div>
+          <button class="btn delete" (click)="deleteJob(job.id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

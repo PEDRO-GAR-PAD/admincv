@@ -1,0 +1,29 @@
+<div class="language-section">
+  <div class="language-form card">
+    <h2>Agregar Idioma</h2>
+    <form (ngSubmit)="AgregarLanguage()">
+      <input
+        type="text"
+        id="language"
+        class="txt"
+        name="language"
+        placeholder="¿Qué idioma puedes hablar?"
+        [(ngModel)]="myLanguage.language"
+      />
+      <button type="submit" class="btn submit">Guardar</button>
+    </form>
+  </div>
+
+  <div class="language-list card">
+    <h2>Idiomas Guardados</h2>
+    <div *ngFor="let lang of languages" class="language-item">
+      <div class="language-info">
+        <span class="language-name">{{ lang.language }}</span>
+        <div class="language-bar"></div>
+      </div>
+      <button type="button" class="btn delete" (click)="deleteLanguage(lang.id)">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+  
